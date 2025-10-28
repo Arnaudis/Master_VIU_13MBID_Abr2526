@@ -4,6 +4,7 @@ import warnings
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
+from ydata_profiling import ProfileReport
 
 def visualizar_datos(fuente: str="data/raw/bank-additional-full.csv", 
                      salida: str="docs/figures/"):
@@ -98,11 +99,10 @@ def visualizar_datos(fuente: str="data/raw/bank-additional-full.csv",
 
 def informe_exploratorio():
     """Genera un informe exploratorio de los datos y lo guarda como HTML."""
-    from pandas_profiling import ProfileReport
     # Leer los datos
     datos=pd.read_csv("data/raw/bank-additional-full.csv", sep=';')
     # Generar el informe
-    profile=ProfileReport(datos, title="Informe exploratorio del banco", explorative=True)
+    profile=ProfileReport(datos, title="Informe exploratorio del banco", explorative=True, minimal=True)
     # Mostrar en notebook
     # profile.to_notebook_iframe()
     # O guardar como HTML
