@@ -1,4 +1,5 @@
 stages:
+  # Partiendo de los datos en bruto, se generan los gráficos y el informe html del banco.
   visualize_data:
     cmd: python src/data_visualization.py
     deps:
@@ -11,6 +12,7 @@ stages:
       - docs/figures/5_matriz_correlacion.png
       - docs/figures/6_estado_civil_vs_target.png
       - docs/figures/7_informe_banco.html
+  # Tests de calidad asociados a la estructura del dataframe y contenido de los datos en cuanto a duplicados y nulos.
   test_data_quality:
     cmd: pytest --html=docs/test_results/test_results.html --self-contained-html test/test_data_quality.py
     deps:
@@ -18,3 +20,11 @@ stages:
       - data/raw/bank-additional-full.csv
     outs:
       - docs/test_results/test_results.html
+  # Tests de calidad basados en expectativas tipo Great Expectations que controla los datos, los valores que cumplan con sus condiciones.
+  test_data_gx:
+    cmd: pytest --html=docs/test_results/test_results_gx.html --self-contained-html test/test_data_gx.py
+    deps:
+      - test/test_data_gx.py
+      - data/raw/bank-additional-full.csv
+    outs:
+      - docs/test_results/test_results_gx.html
