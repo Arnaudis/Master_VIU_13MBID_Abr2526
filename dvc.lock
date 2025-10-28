@@ -1,0 +1,55 @@
+schema: '2.0'
+stages:
+  visualize_data:
+    cmd: python src/data_visualization.py
+    deps:
+    - path: data/raw/bank-additional-full.csv
+      hash: md5
+      md5: f6cb2c1256ffe2836b36df321f46e92c
+      size: 5834924
+    outs:
+    - path: docs/figures/1_distribucion_target.png
+      hash: md5
+      md5: 591d909b11a225612c9cea12c019c2f5
+      size: 24034
+    - path: docs/figures/2_distribucion_educacion.png
+      hash: md5
+      md5: cfb3d62da0570d117d7dd0b9a44f10d9
+      size: 21827
+    - path: docs/figures/3_distribucion_trabajo.png
+      hash: md5
+      md5: 7d26b863918767cbf8f9d2f3dd84e0d7
+      size: 24766
+    - path: docs/figures/4_distribucion_estado_civil.png
+      hash: md5
+      md5: 4283445ae6a885f839065ea61c70fdf8
+      size: 14481
+    - path: docs/figures/5_matriz_correlacion.png
+      hash: md5
+      md5: 79c7499316efbad05dd8f601073559cc
+      size: 97619
+    - path: docs/figures/6_estado_civil_vs_target.png
+      hash: md5
+      md5: f8fcea2a17046b384889b85ff95ae268
+      size: 22098
+    - path: docs/figures/7_informe_banco.html
+      hash: md5
+      md5: ebc78ebdee049a2427df97acd100fcf0
+      size: 1750133
+  test_data_quality:
+    cmd: pytest --html=docs/test_results/test_results.html --self-contained-html
+      test/test_data_quality.py
+    deps:
+    - path: data/raw/bank-additional-full.csv
+      hash: md5
+      md5: f6cb2c1256ffe2836b36df321f46e92c
+      size: 5834924
+    - path: test/test_data_quality.py
+      hash: md5
+      md5: 18de678bac12255aa43a5d238f0af784
+      size: 4067
+    outs:
+    - path: docs/test_results/test_results.html
+      hash: md5
+      md5: 1e9609f56eeb8883409f29adf60358c7
+      size: 33679
