@@ -63,10 +63,26 @@ stages:
       size: 5834924
     - path: test/test_data_gx.py
       hash: md5
-      md5: 945a7b2af3775df5b6b986b69565927a
-      size: 2545
+      md5: 6bff289b599bc6a80c3ed5a2325a13db
+      size: 2466
     outs:
     - path: docs/test_results/test_results_gx.html
       hash: md5
-      md5: afdd87580497e65fca251d783726f1ac
+      md5: 0acc59f02d98babdf343c6ef49b03b86
       size: 33109
+  preprocess_data:
+    cmd: python src/data_preparation.py
+    deps:
+    - path: data/raw/bank-additional-full.csv
+      hash: md5
+      md5: f6cb2c1256ffe2836b36df321f46e92c
+      size: 5834924
+    - path: src/data_preparation.py
+      hash: md5
+      md5: 9bbf4252602b97cf1788ac699109b927
+      size: 1723
+    outs:
+    - path: data/processed/bank_processed.csv
+      hash: md5
+      md5: c5aaab1eb2f8825c06a8d661a772b6cd
+      size: 4444956
