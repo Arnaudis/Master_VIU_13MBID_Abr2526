@@ -79,8 +79,8 @@ stages:
       size: 5834924
     - path: src/data_preparation.py
       hash: md5
-      md5: 9bbf4252602b97cf1788ac699109b927
-      size: 1723
+      md5: 1b1d389153f3442ca353c31d1756223a
+      size: 2585
     outs:
     - path: data/processed/bank_processed.csv
       hash: md5

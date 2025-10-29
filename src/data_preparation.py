@@ -27,14 +27,22 @@ def preprocess_data(input_path=IMPUT_CSV, output_path=OUTPUT_CSV):
     # Graba el dataset procesado
     df.to_csv(output_path, index=False)
 
-    return df.shape
+    # Cambiar valores de la columna 'y' a español de forma los valores serán 'Si' o 'No'
+    df['y'] = df['y'].map({'yes': 'Si', 'no': 'No'})
+    
+    # Cambiar valores de la columna 'contact' a español de forma los valores serán 'Móvil' o 'Telefono'
+    df['contact'] = df['contact'].map({'cellular': 'Móvil', 'telephone': 'Teléfono'})
+
+    sustituciones= [(df['y'] == 'Si').sum(), (df['y'] == 'No').sum(),
+                     (df['contact'] == 'Móvil').sum(), (df['contact'] == 'Teléfono').sum()]
+    return df.shape, sustituciones
 
 
 
 # Esto se va a ejecutar como un script y no como parte de pytest.
 # Por ello, hay que incluir este código
 if __name__ == '__main__':
-    dimensiones=preprocess_data()
+    dimensiones, sustituciones=preprocess_data()
     with open('docs/transformations.txt', 'w') as f:
         fecha_hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         f.write(f"Transformaciones realizadas el {fecha_hora}:\n")
@@ -44,3 +52,5 @@ if __name__ == '__main__':
         f.write("Se eliminó la columna 'default' debido a la alta cantidad de valores desconocidos.\n")
         f.write(f"Cantidad de filas finales: {dimensiones[0]}\n")
         f.write(f"Cantidad de columnas finales: {dimensiones[1]}\n")
+        f.write(f"En la columna 'y' se han cambiado {sustituciones[0]} valores 'yes' por 'Si' y {sustituciones[1]} valores 'no' por 'No'.\n")
+        f.write(f"En la columna 'contact' se han cambiado {sustituciones[2]} valores 'cellular' por 'Móvil' y {sustituciones[3]} valores 'telephone' por 'Teléfono'.\n")
