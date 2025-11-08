@@ -15,8 +15,11 @@ def preprocess_data(input_path=IMPUT_CSV, output_path=OUTPUT_CSV):
     # Transformar los valores 'unknown' en NaN
     df.replace('unknown', np.nan, inplace=True)
 
+    # Se añade el campo 'contacted_before' que indica si el cliente ha sido contactado
+    df['contacted_before'] = np.where(df['pdays'] == 999, 'no', 'yes')
+
     # Se elimina la columna 'default' ya que tiene valores desconocidos
-    df.drop(columns=['default'], inplace=True)
+    df.drop(columns=["default", "pdays"], inplace=True)
 
     # Se hace un filtro para eliminar las filas que tienen valores nulos
     df.dropna(inplace=True)
@@ -32,7 +35,7 @@ def preprocess_data(input_path=IMPUT_CSV, output_path=OUTPUT_CSV):
     df['y'] = df['y'].map(map)
 
     # Cambiar valores de la columna 'contact' a español de forma los valores serán 'Móvil' o 'Telefono'
-    df['contact'] = df['contact'].map({'cellular': 'Móvil', 'telephone': 'Teléfono'})
+    # df['contact'] = df['contact'].map({'cellular': 'Móvil', 'telephone': 'Teléfono'})
 
     # Graba el dataset procesado
     df.to_csv(output_path, index=False)

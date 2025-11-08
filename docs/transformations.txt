@@ -1,4 +1,4 @@
-Transformaciones realizadas el 2025-11-06 19:22:05:
+Transformaciones realizadas el 2025-11-08 12:19:35:
 Se reemplazaron los valores 'unknown' por NaN.
 Se elimnaron las filas con valores nulos.
 Se eliminaron las filas duplicadas.
@@ -6,4 +6,4 @@ Se eliminó la columna 'default' debido a la alta cantidad de valores desconocido
 Cantidad de filas finales: 38232
 Cantidad de columnas finales: 20
 En la columna 'y' se han cambiado 0 valores 'yes' por 1 y 0 valores 'no' por 0.
-En la columna 'contact' se han cambiado 24431 valores 'cellular' por 'Móvil' y 13801 valores 'telephone' por 'Teléfono'.
+En la columna 'contact' se han cambiado 0 valores 'cellular' por 'Móvil' y 0 valores 'telephone' por 'Teléfono'.
