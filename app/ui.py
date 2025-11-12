@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 # Título y descripción
-st.title("🏦 Predicción de Suscripción a Depósito a Plazo Fijo")
+st.title("🏦 Predicción de Suscripción a Depósito a Plazo Fijo ** 13MBID **")
 st.markdown("""
 Esta aplicación utiliza un modelo de Machine Learning para predecir si un cliente bancario 
 suscribirá un depósito a plazo fijo basándose en sus características personales y de contacto.
