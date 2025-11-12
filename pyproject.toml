@@ -21,4 +21,5 @@ dependencies = [
     "streamlit>=1.43.0",
     "streamlit-ace>=0.1.1",
     "ydata-profiling>=4.13.0",
+    "uvicorn>=0.37.0"
 ]

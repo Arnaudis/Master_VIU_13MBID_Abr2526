@@ -2,8 +2,6 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 import pandas as pd
 import joblib
-import os
-import json
 from typing import Dict
 
 app = FastAPI(

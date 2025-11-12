@@ -1,7 +1,6 @@
 from src.train_model import train_model
 import json
 from pathlib import Path
-import sys
 import pytest
 
 def test_training_metrics_regression(tmp_path):
