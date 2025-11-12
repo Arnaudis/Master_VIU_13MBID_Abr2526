@@ -64,7 +64,7 @@ class PredictionResponse(BaseModel):
     model_info: Dict[str, str]
 
 # Cargar el modelo y el preprocesador al iniciar la aplicación
-MODEL_PATH = "models/decision_tree_model.pkl"
+MODEL_PATH = "models/random_forest_model.pkl"
 PREPROCESSOR_PATH = "models/preprocessor.pkl"
 
 try:
