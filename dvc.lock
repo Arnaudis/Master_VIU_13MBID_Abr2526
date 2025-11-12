@@ -95,8 +95,8 @@ stages:
       size: 4368118
     - path: src/train_model.py
       hash: md5
-      md5: d7ebad7c1ab8495d03f8a1f2ad10d2a9
-      size: 10038
+      md5: 4e3a61853e0504c7dcc3b9dc364f9d61
+      size: 10042
     outs:
     - path: metrics/model_metrics.json
       hash: md5
@@ -110,3 +110,32 @@ stages:
       hash: md5
       md5: 2cdea3782e8c0c24507261635870627d
       size: 27075721
+  test_model:
+    cmd: pytest --html=docs/test_results/test_results_model.html 
+      --self-contained-html test/test_training.py
+    deps:
+    - path: data/processed/bank_processed.csv
+      hash: md5
+      md5: 8be1a447fe2602de78a4994a9f15e880
+      size: 4368118
+    - path: metrics/model_metrics.json
+      hash: md5
+      md5: 3ff2c8e33e55119fe02be84d0ef1c9eb
+      size: 162
+    - path: models/preprocessor.pkl
+      hash: md5
+      md5: b516f3ddb7a14dd7bdc0f4f5b4d2cfd3
+      size: 6467
+    - path: models/random_forest_model.pkl
+      hash: md5
+      md5: 2cdea3782e8c0c24507261635870627d
+      size: 27075721
+    - path: test/test_training.py
+      hash: md5
+      md5: 52ba05b96ded7b832bbd9a3497e74331
+      size: 1461
+    outs:
+    - path: docs/test_results/test_results_model.html
+      hash: md5
+      md5: a1a9409f5b82c7bc29c772f08b401798
+      size: 33660
